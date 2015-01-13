@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<serviceGroup>
+	<parameter name="useOriginalwsdl">false</parameter>
+	<schema elementFormDefaultQualified="false"/>
+	
+	<service name="Users" scope="application">
+	    <description>
+	        Soffid Users Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Users
+	    </parameter>
+	</service>
+	
+	<service name="Accounts" scope="application">
+	    <description>
+	        Soffid Accounts Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Accounts
+	    </parameter>
+	</service>
+	
+	<service name="Applications" scope="application">
+	    <description>
+	        Soffid Applications Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Applications
+	    </parameter>
+	</service>
+	
+	<service name="Configuration" scope="application">
+	    <description>
+	        Soffid Configuration Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Configuration
+	    </parameter>
+	</service>
+	
+	<service name="EntryPoints" scope="application">
+	    <description>
+	        Soffid Entry Points Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.EntryPoints
+	    </parameter>
+	</service>
+	
+	<service name="Groups" scope="application">
+	    <description>
+	        Soffid Groups Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Groups
+	    </parameter>
+	</service>
+	
+	<service name="Hosts" scope="application">
+	    <description>
+	        Soffid Hosts Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Hosts
+	    </parameter>
+	</service>
+	
+	<service name="MailDomains" scope="application">
+	    <description>
+	        Soffid Mail Domains Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.MailDomains
+	    </parameter>
+	</service>
+	
+	<service name="MailLists" scope="application">
+	    <description>
+	        Soffid Mail Lists Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.MailLists
+	    </parameter>
+	</service>
+	
+	<service name="Networks" scope="application">
+	    <description>
+	        Soffid Networks Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Networks
+	    </parameter>
+	</service>
+	
+	<service name="OperatingSystems" scope="application">
+	    <description>
+	        Soffid Operating Systems Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.OperatingSystems
+	    </parameter>
+	</service>
+	
+	<service name="PasswordDomains" scope="application">
+	    <description>
+	        Soffid Password Domains Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.PasswordDomains
+	    </parameter>
+	</service>
+	
+	<service name="PasswordPolicies" scope="application">
+	    <description>
+	        Soffid Password Policies Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.PasswordPolicies
+	    </parameter>
+	</service>
+	
+	<service name="Passwords" scope="application">
+	    <description>
+	        Soffid Passwords Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Passwords
+	    </parameter>
+	</service>
+	
+	<service name="Printers" scope="application">
+	    <description>
+	        Soffid Printers Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Printers
+	    </parameter>
+	</service>
+	
+	<service name="RoleGrants" scope="application">
+	    <description>
+	        Soffid Role Grants Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.RoleGrants
+	    </parameter>
+	</service>
+	
+	<service name="Sessions" scope="application">
+	    <description>
+	        Soffid Sessions Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Sessions
+	    </parameter>
+	</service>
+	
+	<service name="Systems" scope="application">
+	    <description>
+	        Soffid Systems Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.Systems
+	    </parameter>
+	</service>
+	
+	<service name="UserAccounts" scope="application">
+	    <description>
+	        Soffid User Accounts Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.UserAccounts
+	    </parameter>
+	</service>
+	
+	
+	<service name="UserDomains" scope="application">
+	    <description>
+	        Soffid User Domains Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.UserDomains
+	    </parameter>
+	</service>
+
+	
+	<service name="UserTypes" scope="application">
+	    <description>
+	        Soffid User Types Service
+	    </description>
+	    <messageReceivers>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-only"
+	    		class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+	        <messageReceiver
+	            mep="http://www.w3.org/2004/08/wsdl/in-out"
+	    		class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+	    </messageReceivers>
+	    <parameter name="ServiceClass">
+	    	com.soffid.iam.addons.webservice.UserTypes
+	    </parameter>
+	</service>
+		
+</serviceGroup>
