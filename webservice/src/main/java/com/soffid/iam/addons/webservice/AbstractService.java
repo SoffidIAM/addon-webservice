@@ -22,6 +22,7 @@ import com.soffid.iam.service.ejb.MailListsService;
 import com.soffid.iam.service.ejb.NetworkService;
 import com.soffid.iam.service.ejb.PasswordService;
 import com.soffid.iam.service.ejb.PrinterService;
+import com.soffid.iam.service.ejb.SelfService;
 import com.soffid.iam.service.ejb.UserDomainService;
 import com.soffid.iam.service.ejb.UserServiceHome;
 
@@ -50,6 +51,19 @@ public class AbstractService {
 	private AdditionalDataService additionalDataService;
 	private PrinterService printerService;
 	private PasswordService passwordService;
+	private SelfService selfService;
+
+	public SelfService getSelfService() throws UnexpectedException {
+		try {
+			if (selfService == null)
+				selfService = EJBLocator.getSelfService();
+			return selfService;
+		} catch (NamingException e) {
+			throw new UnexpectedException(e);
+		} catch (CreateException e) {
+			throw new UnexpectedException(e);
+		}
+	}
 
 	public AbstractService() {
 		super();

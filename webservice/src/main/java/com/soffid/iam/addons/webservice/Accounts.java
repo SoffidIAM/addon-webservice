@@ -39,14 +39,14 @@ public class Accounts extends AbstractService {
 	 * @throws UnexpectedException
 	 */
 	public Collection<Account> findAccounts(String name,
-			String description, AccountType type, String grantedUser,
+			String description, String  accountType, String grantedUser,
 			String grantedGroups, String grantedRoles, String system)
 			throws UnexpectedException {
 		try {
 			AccountCriteria criteria = new AccountCriteria();
 			criteria.setName(name);
 			criteria.setDescription(description);
-			criteria.setType(type);
+			criteria.setType(AccountType.fromString(accountType));
 			criteria.setGrantedUsers(grantedUser);
 			criteria.setGrantedGroups(grantedGroups);
 			criteria.setGrantedRoles(grantedRoles);
@@ -155,7 +155,7 @@ public class Accounts extends AbstractService {
 	public String getAccountPassword (Account account) throws UnexpectedException
 	{
 		try {
-			Password p = getAccountService().queryAccountPassword(account);
+			com.soffid.iam.api.Password p = getAccountService().queryAccountPassword(account);
 			if (p == null)
 				return null;
 			else
@@ -193,7 +193,7 @@ public class Accounts extends AbstractService {
 	public Collection<RoleGrant> getEffectiveRoleGrants (Account account) throws UnexpectedException
 	{
 		try {
-			return getAppService().findEffectiveRolGrantByAccount(account.getId());
+			return getAppService().findEffectiveRoleGrantByAccount(account.getId());
 		} catch (InternalErrorException e) {
 			throw new UnexpectedException(e);
 		}

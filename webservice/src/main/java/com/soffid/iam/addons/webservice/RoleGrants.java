@@ -36,10 +36,10 @@ public class RoleGrants extends AbstractService {
 	{
 		try {
 			RoleAccount roleAccount = new RoleAccount();
-			roleAccount.setAccountDispatcher(account.getSystem());
+			roleAccount.setAccountSystem(account.getSystem());
 			roleAccount.setAccountId(account.getId());
 			roleAccount.setAccountName(account.getName());
-			roleAccount.setApplicationCode(role.getApplicationCode());
+			roleAccount.setInformationSystemName(role.getInformationSystemName());
 			roleAccount.setBpmEnforced(role.getBpmEnforced()? "S": "N");
 			roleAccount.setSystem(role.getSystem());
 			
