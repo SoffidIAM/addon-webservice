@@ -9,7 +9,7 @@
 	<groupId>com.soffid.iam.addon.webservice</groupId>
 	<packaging>pom</packaging>
 	<name>Soffid IAM WebService API</name>
-	<version>2.0.0-1</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<description>SOFFID IAM Web service API</description>
 	<prerequisites>
 		<maven>2.0.1</maven>
@@ -25,7 +25,7 @@
 	<scm>
 		<connection>scm:git:ssh://git@stash.dev.lab:7999/IAM/console.git</connection>
 		<developerConnection>scm:git:ssh://git@stash.dev.lab:7999/IAM/console.git</developerConnection>
-	  <tag>webservice-2.0.0-1</tag>
+	  <tag>HEAD</tag>
  	</scm>
         <repositories>
                 <repository>
