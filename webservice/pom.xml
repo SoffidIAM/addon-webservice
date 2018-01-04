@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.soffid.iam.addon.webservice</groupId>
 		<artifactId>root</artifactId>
-		<version>2.0.0</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>webservice</artifactId>
 	<packaging>aar</packaging>
