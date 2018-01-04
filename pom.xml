@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.soffid.iam</groupId>
-		<artifactId>addons</artifactId>
-		<version>1.0.0</version>
+                <groupId>com.soffid</groupId>
+                <artifactId>template</artifactId>
+                <version>1.0.0</version>
 	</parent>
 	<groupId>com.soffid.iam.addon.webservice</groupId>
 	<packaging>pom</packaging>
@@ -27,6 +27,29 @@
 		<developerConnection>scm:git:ssh://git@stash.dev.lab:7999/IAM/console.git</developerConnection>
 	  <tag>HEAD</tag>
  	</scm>
+        <repositories>
+                <repository>
+                        <id>central</id>
+                        <url>http://forge.dev.lab:8080/archiva/repository/internal</url>
+                </repository>
+                <repository>
+                        <id>soffid</id>
+                        <url>http://forge.dev.lab:8080/archiva/repository/soffid</url>
+                        <snapshots>
+                                <enabled>false</enabled>
+                                <updatePolicy>never</updatePolicy> 
+                                <checksumPolicy>fail</checksumPolicy>
+                        </snapshots>
+                </repository>
+                <repository>
+                        <id>snapshots</id>
+                        <url>http://forge.dev.lab:8080/archiva/repository/snapshots</url>
+                        <snapshots>
+                                <enabled>true</enabled>
+                                <!-- <updatePolicy>never</updatePolicy> <checksumPolicy>fail</checksumPolicy> -->
+                        </snapshots>
+                </repository>
+        </repositories>
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<plugins>
