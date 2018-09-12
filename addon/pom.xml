@@ -158,7 +158,6 @@
 			<groupId>${pom.groupId}</groupId>
 			<artifactId>webservice</artifactId>
 			<version>${pom.version}</version>
-			<type>aar</type>
 		</dependency>
 	</dependencies>
 </project>

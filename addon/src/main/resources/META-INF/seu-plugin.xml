@@ -3,5 +3,5 @@
 <SoffidIAMPlugin xmlns="http://www.soffid.com/schema/iam-plugin-v1"> 
 	<name>Soffid core Web Services</name>
 	<version>${pom.version}</version>
-	<webService name="Soffid IAM Web Service API" resource="webservice-${pom.version}.aar"/>
+	<webService name="Soffid IAM Web Service API" resource="webservice-${pom.version}.jar"/>
 </SoffidIAMPlugin>

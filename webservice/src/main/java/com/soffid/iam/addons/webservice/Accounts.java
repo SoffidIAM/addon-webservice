@@ -3,6 +3,9 @@ package com.soffid.iam.addons.webservice;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.jws.WebParam;
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.Account;
 import com.soffid.iam.api.RoleAccount;
@@ -19,24 +22,16 @@ import es.caib.seycon.ng.exception.InternalErrorException;
  * @author bubu
  * 
  */
-public class Accounts extends AbstractService {
-	/**
-	 * @param name
-	 *            account Name (% wildcard is accepted)
-	 * @param description
-	 *            account Description (% wildcard is accepted)
-	 * @param type
-	 *            account Type. Null for any account Type
-	 * @param grantedUser
-	 *            granted userName filter
-	 * @param grantedGroups
-	 *            granted group name filter
-	 * @param grantedRoles
-	 *            granted role name filter
-	 * @param system
-	 *            managed system filter
-	 * @return list of accounts matching the criteria.
-	 * @throws UnexpectedException
+@WebService(
+        portName = "Accounts",
+        serviceName = "services/Accounts",
+        targetNamespace = "http://iam.soffid.com/wsdl",
+        endpointInterface = "com.soffid.iam.addons.webservice.AccountsWS"
+)
+// @HandlerChain(file = "server-handlers.xml")
+public class Accounts extends AbstractService implements AccountsWS {
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#findAccounts(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public Collection<Account> findAccounts(String name,
 			String description, String  accountType, String grantedUser,
@@ -46,7 +41,8 @@ public class Accounts extends AbstractService {
 			AccountCriteria criteria = new AccountCriteria();
 			criteria.setName(name);
 			criteria.setDescription(description);
-			criteria.setType(AccountType.fromString(accountType));
+			if (accountType != null && ! accountType.isEmpty())
+				criteria.setType(AccountType.fromString(accountType));
 			criteria.setGrantedUsers(grantedUser);
 			criteria.setGrantedGroups(grantedGroups);
 			criteria.setGrantedRoles(grantedRoles);
@@ -57,13 +53,8 @@ public class Accounts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Creates a new account
-	 * 
-	 * @param account the account to create
-	 * @return the created account
-	 * @throws UnexpectedException
-	 * @throws AccountAlreadyExistsException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#create(com.soffid.iam.api.Account)
 	 */
 	public Account create (Account account) throws UnexpectedException, AccountAlreadyExistsException
 	{
@@ -74,12 +65,8 @@ public class Accounts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes an account
-	 * 
-	 * @param account the account to remove
-	 * @throws UnexpectedException
-	 * @throws AccountAlreadyExistsException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#remove(com.soffid.iam.api.Account)
 	 */
 	public void remove (Account account) throws UnexpectedException
 	{
@@ -90,12 +77,8 @@ public class Accounts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update the account data
-	 * 
-	 * @param account account to update
-	 * @throws UnexpectedException
-	 * @throws AccountAlreadyExistsException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#update(com.soffid.iam.api.Account)
 	 */
 	public void update (Account account) throws UnexpectedException, AccountAlreadyExistsException
 	{
@@ -106,14 +89,8 @@ public class Accounts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update the account password
-	 * 
-	 * @param account account to update
-	 * @param password the password to set
-	 * 
-	 * @throws UnexpectedException
-	 * @throws AccountAlreadyExistsException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#setAccountPassword(com.soffid.iam.api.Account, java.lang.String)
 	 */
 	public void setAccountPassword (Account account, String password) throws UnexpectedException
 	{
@@ -124,16 +101,8 @@ public class Accounts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update the account password for High Privileged accounts.
-	 * 
-	 * @param account account to update
-	 * @param password the password to set
-	 * @param untilDate the expiration date for the password
-	 * @param force true to steal account from password ownere
-	 * 
-	 * @throws UnexpectedException
-	 * @throws AccountAlreadyExistsException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#setHPAccountPassword(com.soffid.iam.api.Account, java.lang.String, java.util.Date, boolean)
 	 */
 	public void setHPAccountPassword (Account account, String password, Date untilDate, boolean force) throws UnexpectedException
 	{
@@ -144,13 +113,8 @@ public class Accounts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Gets the account passsword
-	 * 
-	 * @param account account to get password of
-	 * @return the stored password for the account
-	 * @throws UnexpectedException
-	 * @throws AccountAlreadyExistsException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#getAccountPassword(com.soffid.iam.api.Account)
 	 */
 	public String getAccountPassword (Account account) throws UnexpectedException
 	{
@@ -165,13 +129,8 @@ public class Accounts extends AbstractService {
 		}
 	}
 	
-	/**
-	 * Get the role grants for an account
-	 * 
-	 * @param account account to query on
-	 * @return the list of granted roles
-	 * @throws UnexpectedException
-	 * @throws AccountAlreadyExistsException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#getRoleGrants(com.soffid.iam.api.Account)
 	 */
 	public Collection<RoleGrant> getRoleGrants (Account account) throws UnexpectedException
 	{
@@ -182,13 +141,8 @@ public class Accounts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Get the effective role grants for an account
-	 * 
-	 * @param account account to query on
-	 * @return the list of granted roles, either directly or not
-	 * @throws UnexpectedException
-	 * @throws AccountAlreadyExistsException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AccountsWS#getEffectiveRoleGrants(com.soffid.iam.api.Account)
 	 */
 	public Collection<RoleGrant> getEffectiveRoleGrants (Account account) throws UnexpectedException
 	{
