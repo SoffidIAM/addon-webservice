@@ -2,31 +2,24 @@ package com.soffid.iam.addons.webservice;
 
 
 import javax.ejb.CreateException;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import com.soffid.iam.EJBLocator;
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.service.ejb.AccountService;
-import com.soffid.iam.service.ejb.AccountServiceHome;
 import com.soffid.iam.service.ejb.AdditionalDataService;
 import com.soffid.iam.service.ejb.ApplicationService;
-import com.soffid.iam.service.ejb.ApplicationServiceHome;
+import com.soffid.iam.service.ejb.AttributeTranslationService;
 import com.soffid.iam.service.ejb.ConfigurationService;
 import com.soffid.iam.service.ejb.DispatcherService;
-import com.soffid.iam.service.ejb.DispatcherServiceHome;
 import com.soffid.iam.service.ejb.EntryPointService;
 import com.soffid.iam.service.ejb.GroupService;
-import com.soffid.iam.service.ejb.GroupServiceHome;
 import com.soffid.iam.service.ejb.MailListsService;
 import com.soffid.iam.service.ejb.NetworkService;
 import com.soffid.iam.service.ejb.PasswordService;
 import com.soffid.iam.service.ejb.PrinterService;
 import com.soffid.iam.service.ejb.SelfService;
 import com.soffid.iam.service.ejb.UserDomainService;
-import com.soffid.iam.service.ejb.UserServiceHome;
-
-import es.caib.seycon.ng.exception.InternalErrorException;
 
 
 // ERROR: ERROR
@@ -52,6 +45,7 @@ public class AbstractService {
 	private PrinterService printerService;
 	private PasswordService passwordService;
 	private SelfService selfService;
+	private AttributeTranslationService attributeTranslationService;
 
 	public SelfService getSelfService() throws UnexpectedException {
 		try {
@@ -223,4 +217,16 @@ public class AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
+
+	protected AttributeTranslationService getAttributeTranslationServiceService() throws UnexpectedException {
+		try {
+			if (attributeTranslationService == null)
+				attributeTranslationService = EJBLocator.getAttributeTranslationService();
+			return attributeTranslationService;
+		} catch (NamingException e) {
+			throw new UnexpectedException(e);
+		} catch (CreateException e) {
+			throw new UnexpectedException(e);
+		}
+	}	
 }
