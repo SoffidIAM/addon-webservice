@@ -2,22 +2,23 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.UserDomain;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class UserDomains extends AbstractService {
-	
-	/**
-	 * Find all user domains
-	 * 
-	 * @return the user domains list
-	 * @throws UnexpectedException
+@WebService(
+		portName = "UserDomains",
+		serviceName = "services/UserDomains",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.UserDomainsWS"
+)
+public class UserDomains extends AbstractService implements UserDomainsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserDomainsWS#findUserDomains()
 	 */
 	public Collection<UserDomain> findUserDomains()
 			throws UnexpectedException {
@@ -28,13 +29,8 @@ public class UserDomains extends AbstractService {
 		}
 	}
 	
-	
-	/**
-	 * Creates a UserDomain
-	 * 
-	 * @param userDomain UserDomain to create
-	 * @return created UserDomain
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserDomainsWS#create(com.soffid.iam.api.UserDomain)
 	 */
 	public UserDomain create (UserDomain userDomain) throws UnexpectedException
 	{
@@ -45,11 +41,8 @@ public class UserDomains extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes a UserDomain
-	 * 
-	 * @param userDomain userDomain to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserDomainsWS#remove(com.soffid.iam.api.UserDomain)
 	 */
 	public void remove (UserDomain userDomain) throws UnexpectedException
 	{
@@ -60,12 +53,8 @@ public class UserDomains extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update UserDomain data
-	 * 
-	 * @param userDomain the UserDomain to update
-	 * @return the updated UserDomain
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserDomainsWS#update(com.soffid.iam.api.UserDomain)
 	 */
 	public UserDomain update (UserDomain userDomain) throws UnexpectedException
 	{
@@ -76,6 +65,4 @@ public class UserDomains extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-
 }
-

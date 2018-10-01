@@ -2,19 +2,23 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.UserType;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
+@WebService(
+		portName = "UserTypes",
+		serviceName = "services/UserTypes",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.UserTypesWS"
+)
+public class UserTypes extends AbstractService implements UserTypesWS {
 
-public class UserTypes extends AbstractService {
-	
-	/**
-	 * Find all user domains
-	 * 
-	 * @return the user domains list
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserTypesWS#findUserTypes()
 	 */
 	public Collection<UserType> findUserTypes()
 			throws UnexpectedException {
@@ -24,14 +28,9 @@ public class UserTypes extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	
-	/**
-	 * Creates a UserType
-	 * 
-	 * @param userType User type to create
-	 * @return created User type
-	 * @throws UnexpectedException
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserTypesWS#create(com.soffid.iam.api.UserType)
 	 */
 	public UserType create (UserType userType) throws UnexpectedException
 	{
@@ -42,11 +41,8 @@ public class UserTypes extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes a UserType
-	 * 
-	 * @param userType User type to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserTypesWS#remove(com.soffid.iam.api.UserType)
 	 */
 	public void remove (UserType userType) throws UnexpectedException
 	{
@@ -57,12 +53,8 @@ public class UserTypes extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update UserType data
-	 * 
-	 * @param userType the User type to update
-	 * @return the updated User type
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserTypesWS#update(com.soffid.iam.api.UserType)
 	 */
 	public UserType update (UserType userType) throws UnexpectedException
 	{
@@ -73,6 +65,4 @@ public class UserTypes extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-
 }
-

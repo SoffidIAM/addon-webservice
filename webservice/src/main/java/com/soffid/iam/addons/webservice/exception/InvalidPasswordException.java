@@ -1,5 +1,6 @@
 package com.soffid.iam.addons.webservice.exception;
 
+@SuppressWarnings("serial")
 public class InvalidPasswordException extends Exception {
 
 	public InvalidPasswordException() {
@@ -16,5 +17,4 @@ public class InvalidPasswordException extends Exception {
 	public InvalidPasswordException(String message, Throwable cause) {
 		super(message, cause);
 	}
-
 }

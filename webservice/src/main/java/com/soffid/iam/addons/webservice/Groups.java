@@ -3,40 +3,25 @@ package com.soffid.iam.addons.webservice;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import com.soffid.iam.addons.webservice.exception.UnexpectedException;
-import com.soffid.iam.api.Account;
-import com.soffid.iam.api.Group;
-import com.soffid.iam.api.GroupUser;
-import com.soffid.iam.api.Role;
-import com.soffid.iam.api.RoleAccount;
-import com.soffid.iam.api.RoleGrant;
-import com.soffid.iam.api.User;
-import com.soffid.iam.api.UserAccount;
+import javax.jws.WebService;
 
-import es.caib.seycon.ng.comu.AccountCriteria;
-import es.caib.seycon.ng.comu.AccountType;
-import es.caib.seycon.ng.comu.Password;
-import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
+import com.soffid.iam.addons.webservice.exception.UnexpectedException;
+import com.soffid.iam.api.Group;
+import com.soffid.iam.api.Role;
+import com.soffid.iam.api.RoleGrant;
+
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class Groups extends AbstractService {
-	/**
-	 * Retrieves groups
-	 * 
-	 * @param name the group name (accepts % wildcard
-	 * @param parent will find children of this one  (accepts % wildcard
-	 * @param description group description
-	 * @param type group type
-	 * @param removed will search for removed groups
-	 * @param drive shraed drive letter
-	 * @param driveHost shared drive host
-	 * @return a group collection
-	 * 
-	 * @throws UnexpectedException
+@WebService(
+        portName = "Groups",
+        serviceName = "services/Groups",
+        targetNamespace = "http://iam.soffid.com/wsdl",
+        endpointInterface = "com.soffid.iam.addons.webservice.GroupsWS"
+)
+public class Groups extends AbstractService implements GroupsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.GroupsWS#findGroups(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, java.lang.String, java.lang.String)
 	 */
 	public Collection<Group> findGroups(String name, String parent, String description, String type, Boolean removed, String drive, String driveHost)
 			throws UnexpectedException {
@@ -47,14 +32,9 @@ public class Groups extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	
-	/**
-	 * Creates a group
-	 * 
-	 * @param group group to create
-	 * @return created group
-	 * @throws UnexpectedException
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.GroupsWS#create(com.soffid.iam.api.Group)
 	 */
 	public Group create (Group group) throws UnexpectedException
 	{
@@ -65,12 +45,8 @@ public class Groups extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes a group
-	 * 
-	 * @param group to remove
-	 * @return the removed group
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.GroupsWS#remove(com.soffid.iam.api.Group)
 	 */
 	public Group remove (Group group) throws UnexpectedException
 	{
@@ -82,12 +58,8 @@ public class Groups extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update group data
-	 * 
-	 * @param group the group to update
-	 * @return the updated group
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.GroupsWS#update(com.soffid.iam.api.Group)
 	 */
 	public Group update (Group group) throws UnexpectedException
 	{
@@ -98,13 +70,8 @@ public class Groups extends AbstractService {
 		}
 	}
 	
-	
-	/**
-	 * Get the role grants for a group
-	 * 
-	 * @param group group to query on
-	 * @return the list of granted roles
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.GroupsWS#getRoleGrants(com.soffid.iam.api.Group)
 	 */
 	public Collection<RoleGrant> getRoleGrants (Group group) throws UnexpectedException
 	{
@@ -128,4 +95,3 @@ public class Groups extends AbstractService {
 		}
 	}
 }
-

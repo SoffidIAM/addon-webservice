@@ -1,39 +1,24 @@
 package com.soffid.iam.addons.webservice;
 
-import java.util.Collection;
-import java.util.Date;
+import javax.jws.WebService;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
-import com.soffid.iam.api.Account;
-import com.soffid.iam.api.RoleAccount;
-import com.soffid.iam.api.RoleGrant;
-import com.soffid.iam.api.Session;
-import com.soffid.iam.api.User;
 
-import es.caib.seycon.ng.comu.AccountCriteria;
-import es.caib.seycon.ng.comu.AccountType;
 import es.caib.seycon.ng.comu.Password;
-import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
 import es.caib.seycon.ng.exception.BadPasswordException;
 import es.caib.seycon.ng.exception.InternalErrorException;
 import es.caib.seycon.ng.exception.InvalidPasswordException;
 
-/**
- * @author bubu
- * 
- */
-public class Passwords extends AbstractService {
-	/**
-	 * Changes an account password
-	 * 
-	 * @param account 
-	 * @param dispatcher 
-	 * @param oldPassword 
-	 * @param newPassword 
-	 *            
-	 * @return list of active sessions on this host
-	 * @throws UnexpectedException
-	 * @throws com.soffid.iam.addons.webservice.exception.BadPasswordException 
+@WebService(
+		portName = "Passwords",
+		serviceName = "services/Passwords",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.PasswordsWS"
+)
+public class Passwords extends AbstractService implements PasswordsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.PasswordsWS#changePassword(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public void changePassword( String account, String dispatcher, String oldPassword, String newPassword)
 			throws UnexpectedException, com.soffid.iam.addons.webservice.exception.BadPasswordException {
@@ -48,17 +33,8 @@ public class Passwords extends AbstractService {
 		}
 	}
 
-	/**
-	 * Verifies an account password
-	 * 
-	 * @param account account name
-	 * @param system system name 
-	 * @param password password to verify 
-	 * @return true if the password is correct
-	 *            
-	 * @return list of active sessions on this host
-	 * @throws UnexpectedException
-	 * @throws com.soffid.iam.addons.webservice.exception.BadPasswordException 
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.PasswordsWS#validatePassword(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public boolean validatePassword( String account, String system, String password)
 			throws UnexpectedException, com.soffid.iam.addons.webservice.exception.BadPasswordException {
@@ -69,17 +45,8 @@ public class Passwords extends AbstractService {
 		}
 	}
 
-
-	/**
-	 * Checks if password is expired
-	 * 
-	 * @param account account name
-	 * @param system system name 
-	 * @return true if the password is expired
-	 *            
-	 * @return list of active sessions on this host
-	 * @throws UnexpectedException
-	 * @throws com.soffid.iam.addons.webservice.exception.BadPasswordException 
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.PasswordsWS#isPasswordExpired(java.lang.String, java.lang.String)
 	 */
 	public boolean isPasswordExpired ( String account, String system)
 			throws UnexpectedException, com.soffid.iam.addons.webservice.exception.BadPasswordException {
@@ -89,5 +56,4 @@ public class Passwords extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-
 }

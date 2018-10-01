@@ -16,27 +16,23 @@ import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
 public interface AccountsWS {
 
 	/**
-	 * @param name
-	 *            account Name (% wildcard is accepted)
-	 * @param description
-	 *            account Description (% wildcard is accepted)
-	 * @param type
-	 *            account Type. Null for any account Type
-	 * @param grantedUser
-	 *            granted userName filter
-	 * @param grantedGroups
-	 *            granted group name filter
-	 * @param grantedRoles
-	 *            granted role name filter
-	 * @param system
-	 *            managed system filter
+	 * @param name account Name (% wildcard is accepted)
+	 * @param description account Description (% wildcard is accepted)
+	 * @param type account Type. Null for any account Type
+	 * @param grantedUser granted userName filter
+	 * @param grantedGroups granted group name filter
+	 * @param grantedRoles granted role name filter
+	 * @param system managed system filter
 	 * @return list of accounts matching the criteria.
 	 * @throws UnexpectedException
 	 */
-	Collection<Account> findAccounts( @WebParam(name = "name") String name, @WebParam(name = "description") String description, @WebParam(name = "accountType") String accountType, 
+	Collection<Account> findAccounts(
+			@WebParam(name = "name") String name,
+			@WebParam(name = "description") String description,
+			@WebParam(name = "accountType") String accountType,
 			@WebParam(name = "grantedUser") String grantedUser,
-			@WebParam(name = "grantedGroups") String grantedGroups, 
-			@WebParam(name = "grantedRoles") String grantedRoles, 
+			@WebParam(name = "grantedGroups") String grantedGroups,
+			@WebParam(name = "grantedRoles") String grantedRoles,
 			@WebParam(name = "system") String system) throws UnexpectedException;
 
 	/**
@@ -121,5 +117,4 @@ public interface AccountsWS {
 	 * @throws AccountAlreadyExistsException
 	 */
 	Collection<RoleGrant> getEffectiveRoleGrants(Account account) throws UnexpectedException;
-
 }

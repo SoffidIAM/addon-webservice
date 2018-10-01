@@ -4,17 +4,14 @@ import javax.ejb.EJBException;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
+@SuppressWarnings("serial")
 public class UnexpectedException extends Exception {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	String message;
 	
 	public String getMessage() {
 		return message;
 	}
-
 
 	public UnexpectedException(Throwable th) {
 		do
@@ -34,7 +31,6 @@ public class UnexpectedException extends Exception {
 		}
     }
 
-
     private static Throwable getCause( Throwable th)
     {
     	Throwable cause = null;
@@ -49,5 +45,4 @@ public class UnexpectedException extends Exception {
     	else
     		return cause;
     }
-
 }

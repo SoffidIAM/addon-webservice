@@ -2,34 +2,30 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
-import org.omg.CORBA.UnknownUserException;
+import javax.jws.WebService;
 
+import org.omg.CORBA.UnknownUserException;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.addons.webservice.exception.UnknownSystemException;
-import com.soffid.iam.api.Account;
-import com.soffid.iam.api.GroupUser;
 import com.soffid.iam.api.System;
 import com.soffid.iam.api.User;
 import com.soffid.iam.api.UserAccount;
 
-import es.caib.seycon.ng.comu.AccountCriteria;
-import es.caib.seycon.ng.comu.AccountType;
 import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
 import es.caib.seycon.ng.exception.InternalErrorException;
 import es.caib.seycon.ng.exception.NeedsAccountNameException;
 
-/**
- * @author bubu
- *
- */
-public class UserAccounts extends AbstractService {
-	/**
-	 * Retrieves user's accounts
-	 * 
-	 * @param userName the user name
-	 * @return a collection of user owned accounts
-	 * @throws UnexpectedException
+@WebService(
+		portName = "UserAccounts",
+		serviceName = "services/UserAccounts",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.UserAccountsWS"
+)
+public class UserAccounts extends AbstractService implements UserAccountsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserAccountsWS#findAccountsByUser(java.lang.String)
 	 */
 	public Collection<UserAccount> findAccountsByUser (String userName) throws UnexpectedException
 	{
@@ -41,19 +37,8 @@ public class UserAccounts extends AbstractService {
 		}
 	}
 	
-	/**
-	 * Creates a user owned account on a managed system.
-	 * 
-	 * @param userName the user name
-	 * @param system the system to create the account on
-	 * @param accountName account name (optional)
-	 * @return the created account
-	 * 
-	 * @throws UnknownUserException
-	 * @throws UnknownSystemException
-	 * @throws NeedsAccountNameException
-	 * @throws AccountAlreadyExistsException
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserAccountsWS#create(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public UserAccount create (String userName, String system, String accountName) throws UnknownUserException, UnknownSystemException, NeedsAccountNameException, AccountAlreadyExistsException, UnexpectedException
 	{
@@ -70,11 +55,8 @@ public class UserAccounts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Remove an account
-	 * 
-	 * @param account the account to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.UserAccountsWS#remove(com.soffid.iam.api.UserAccount)
 	 */
 	public void remove (UserAccount account) throws UnexpectedException
 	{

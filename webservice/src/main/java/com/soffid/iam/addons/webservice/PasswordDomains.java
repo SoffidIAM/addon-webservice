@@ -2,22 +2,23 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.PasswordDomain;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class PasswordDomains extends AbstractService {
-	
-	/**
-	 * Find all user domains
-	 * 
-	 * @return the user domains list
-	 * @throws UnexpectedException
+@WebService(
+		portName = "PasswordDomains",
+		serviceName = "services/PasswordDomains",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.PasswordDomainsWS"
+)
+public class PasswordDomains extends AbstractService implements PasswordDomainsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.PasswordDomainsWS#findPasswordDomains()
 	 */
 	public Collection<PasswordDomain> findPasswordDomains()
 			throws UnexpectedException {
@@ -27,14 +28,9 @@ public class PasswordDomains extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	
-	/**
-	 * Creates a PasswordDomain
-	 * 
-	 * @param passwordDomain Password Domain to create
-	 * @return created Password Domain
-	 * @throws UnexpectedException
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.PasswordDomainsWS#create(com.soffid.iam.api.PasswordDomain)
 	 */
 	public PasswordDomain create (PasswordDomain passwordDomain) throws UnexpectedException
 	{
@@ -45,11 +41,8 @@ public class PasswordDomains extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes a PasswordDomain
-	 * 
-	 * @param passwordDomain password Domain to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.PasswordDomainsWS#remove(com.soffid.iam.api.PasswordDomain)
 	 */
 	public void remove (PasswordDomain passwordDomain) throws UnexpectedException
 	{
@@ -60,12 +53,8 @@ public class PasswordDomains extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update PasswordDomain data
-	 * 
-	 * @param passwordDomain the Password Domain to update
-	 * @return the updated Password Domain
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.PasswordDomainsWS#update(com.soffid.iam.api.PasswordDomain)
 	 */
 	public PasswordDomain update (PasswordDomain passwordDomain) throws UnexpectedException
 	{
@@ -76,6 +65,4 @@ public class PasswordDomains extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-
 }
-

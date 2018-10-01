@@ -2,28 +2,23 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
-import com.soffid.iam.api.Network;
 import com.soffid.iam.api.Network;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class Networks extends AbstractService {
-	
-	/**
-	 * @param name
-	 * @param description
-	 * @param address
-	 * @param mask
-	 * @param lan
-	 * @param dhcpParams
-	 * @param networkName
-	 * @return
-	 * @throws UnexpectedException
+@WebService(
+		portName = "Networks",
+		serviceName = "services/Networks",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.NetworksWS"
+)
+public class Networks extends AbstractService implements NetworksWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.NetworksWS#findNetworks(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, java.lang.String, java.lang.String)
 	 */
 	public Collection<Network> findNetworks(String name, String description, String address, String mask, Boolean lan,
 			String dhcpParams, String networkName)
@@ -36,14 +31,9 @@ public class Networks extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	
-	/**
-	 * Creates a Network
-	 * 
-	 * @param network network to create
-	 * @return created network
-	 * @throws UnexpectedException
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.NetworksWS#create(com.soffid.iam.api.Network)
 	 */
 	public Network create (Network network) throws UnexpectedException
 	{
@@ -54,11 +44,8 @@ public class Networks extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes a Network
-	 * 
-	 * @param network network to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.NetworksWS#remove(com.soffid.iam.api.Network)
 	 */
 	public void remove (Network network) throws UnexpectedException
 	{
@@ -69,12 +56,8 @@ public class Networks extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update Network data
-	 * 
-	 * @param network the Network to update
-	 * @return the updated Network
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.NetworksWS#update(com.soffid.iam.api.Network)
 	 */
 	public Network update (Network network) throws UnexpectedException
 	{
@@ -85,7 +68,4 @@ public class Networks extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	
 }
-

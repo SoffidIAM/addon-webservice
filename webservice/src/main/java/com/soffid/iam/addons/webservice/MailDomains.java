@@ -1,27 +1,24 @@
 package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
-import java.util.Date;
+
+import javax.jws.WebService;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.MailDomain;
-import com.soffid.iam.api.MailList;
 
-import es.caib.seycon.ng.comu.Password;
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class MailDomains extends AbstractService {
-	/**
-	 * Retrieves mail domains
-	 * @param name the domain name filter (accepts % wildcard)
-	 * @param description domain description  (accepts % wildcard)
-	 * @param obsolete true to find obsolete domains
-	 * @return the list of mail domains
-	 * @throws UnexpectedException
+@WebService(
+		portName = "MailDomains",
+		serviceName = "services/MailDomains",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.MailDomainsWS"
+)
+public class MailDomains extends AbstractService implements MailDomainsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.MailDomainsWS#findMailDomains(java.lang.String, java.lang.String, java.lang.Boolean)
 	 */
 	public Collection<MailDomain> findMailDomains(String name, String description, Boolean obsolete)
 			throws UnexpectedException {
@@ -32,12 +29,8 @@ public class MailDomains extends AbstractService {
 		}
 	}
 
-	/**
-	 * Creates a new mailDomain
-	 * 
-	 * @param mailDomain the mail domain to create
-	 * @return the created mail domain
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.MailDomainsWS#create(com.soffid.iam.api.MailDomain)
 	 */
 	public MailDomain create (MailDomain mailDomain) throws UnexpectedException
 	{
@@ -48,11 +41,8 @@ public class MailDomains extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes an mailDomain
-	 * 
-	 * @param mailDomain the mail domain to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.MailDomainsWS#remove(com.soffid.iam.api.MailDomain)
 	 */
 	public void remove (MailDomain mailDomain) throws UnexpectedException
 	{
@@ -63,11 +53,8 @@ public class MailDomains extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update the mailDomain data
-	 * 
-	 * @param mailDomain mail domain to update
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.MailDomainsWS#update(com.soffid.iam.api.MailDomain)
 	 */
 	public void update (MailDomain mailDomain) throws UnexpectedException
 	{
@@ -77,5 +64,4 @@ public class MailDomains extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-
 }

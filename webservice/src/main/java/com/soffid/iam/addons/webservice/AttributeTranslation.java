@@ -3,18 +3,22 @@ package com.soffid.iam.addons.webservice;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-public class AttributeTranslation extends AbstractService {
+@WebService(
+        portName = "AttributeTranslation",
+        serviceName = "services/AttributeTranslation",
+        targetNamespace = "http://iam.soffid.com/wsdl",
+        endpointInterface = "com.soffid.iam.addons.webservice.AttributeTranslationWS"
+)
+public class AttributeTranslation extends AbstractService implements AttributeTranslationWS {
 	
-	/**
-	 * Retrieves the list of attributes
-	 * 
-	 * @return List of attributes
-	 * 
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AttributeTranslationWS#getAttributes()
 	 */
 	public Collection<String> getAttributes() throws UnexpectedException {
 		try {
@@ -24,14 +28,8 @@ public class AttributeTranslation extends AbstractService {
 		}
 	}
 	
-	/**
-	 * Retrieves the list of attributes
-	 * 
-	 * @param filterName Search text to match with the attribute names
-	 * 
-	 * @return List of attributes
-	 * 
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AttributeTranslationWS#findAttributes(java.lang.String)
 	 */
 	public Collection<String> findAttributes(String filterName) throws UnexpectedException {
 		try {
@@ -48,14 +46,8 @@ public class AttributeTranslation extends AbstractService {
 		}
 	}
 	
-	/**
-	 * Retrieves the values of an attribute
-	 * 
-	 * @param attribute Name of the attribute
-	 * 
-	 * @return List of values of an attribute
-	 * 
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AttributeTranslationWS#findTranslations(java.lang.String)
 	 */
 	public Collection<com.soffid.iam.api.AttributeTranslation> findTranslations(String attribute) throws UnexpectedException {
 		try {
@@ -68,15 +60,8 @@ public class AttributeTranslation extends AbstractService {
 		}
 	}
 	
-	/**
-	 * Retrieves the values of an attribute an the value of its column1
-	 * 
-	 * @param attribute Name of the attribute
-	 * @param column1 Value of the column1
-	 * 
-	 * @return List of values of an attribute
-	 * 
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.AttributeTranslationWS#findTranslationsByColumn1(java.lang.String, java.lang.String)
 	 */
 	public Collection<com.soffid.iam.api.AttributeTranslation> findTranslationsByColumn1(String attribute, String column1) throws UnexpectedException {
 		try {

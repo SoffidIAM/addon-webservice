@@ -1,29 +1,23 @@
 package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+
+import javax.jws.WebService;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
-import com.soffid.iam.api.Network;
-import com.soffid.iam.api.Network;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class Configuration extends AbstractService {
+@WebService(
+        portName = "Configuration",
+        serviceName = "services/Configuration",
+        targetNamespace = "http://iam.soffid.com/wsdl",
+        endpointInterface = "com.soffid.iam.addons.webservice.ConfigurationWS"
+)
+public class Configuration extends AbstractService implements ConfigurationWS {
 	
-	/**
-	 * Returns soffid configuration parameters
-	 * @param name name filter (accepts % wildcard)
-	 * @param description description filter (accepts % wildcard) 
-	 * @param networkName network name filter (accepts % wildcard)
-	 * @return the list of configuration parameters
-	 * 
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.ConfigurationWS#findConfig(java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public Collection<com.soffid.iam.api.Configuration> findConfig (String name, String description, String networkName)
 			throws UnexpectedException {
@@ -33,6 +27,4 @@ public class Configuration extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
 }
-

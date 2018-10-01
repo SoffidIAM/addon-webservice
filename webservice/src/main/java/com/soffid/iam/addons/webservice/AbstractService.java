@@ -1,6 +1,5 @@
 package com.soffid.iam.addons.webservice;
 
-
 import javax.ejb.CreateException;
 import javax.naming.NamingException;
 
@@ -20,7 +19,6 @@ import com.soffid.iam.service.ejb.PasswordService;
 import com.soffid.iam.service.ejb.PrinterService;
 import com.soffid.iam.service.ejb.SelfService;
 import com.soffid.iam.service.ejb.UserDomainService;
-
 
 // ERROR: ERROR
 // Missing user-printer group-printer

@@ -2,22 +2,23 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.OsType;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class OperatingSystems extends AbstractService {
-	
-	/**
-	 * Find operatingSystems
-	 * 
-	 * @return the operating systems list
-	 * @throws UnexpectedException
+@WebService(
+		portName = "OperatingSystems",
+		serviceName = "services/OperatingSystems",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.OperatingSystemsWS"
+)
+public class OperatingSystems extends AbstractService implements OperatingSystemsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.OperatingSystemsWS#getOsTypes()
 	 */
 	public Collection<OsType> getOsTypes()
 			throws UnexpectedException {
@@ -27,14 +28,9 @@ public class OperatingSystems extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	
-	/**
-	 * Creates a operationg system
-	 * 
-	 * @param operatingSystem Operating system to create
-	 * @return created Operating System
-	 * @throws UnexpectedException
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.OperatingSystemsWS#create(com.soffid.iam.api.OsType)
 	 */
 	public OsType create (OsType operatingSystem) throws UnexpectedException
 	{
@@ -45,11 +41,8 @@ public class OperatingSystems extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes a Operating System
-	 * 
-	 * @param operatingSystem operatingSystem to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.OperatingSystemsWS#remove(com.soffid.iam.api.OsType)
 	 */
 	public void remove (OsType operatingSystem) throws UnexpectedException
 	{
@@ -60,12 +53,8 @@ public class OperatingSystems extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update Operating System data
-	 * 
-	 * @param operatingSystem the Operating System to update
-	 * @return the updated Operating System
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.OperatingSystemsWS#update(com.soffid.iam.api.OsType)
 	 */
 	public OsType update (OsType operatingSystem) throws UnexpectedException
 	{
@@ -76,7 +65,4 @@ public class OperatingSystems extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-
-	
 }
-

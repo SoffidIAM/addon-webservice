@@ -2,24 +2,23 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.MailList;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class MailLists extends AbstractService {
-	/**
-	 * Retrieves a list of mail lists
-	 * @param name the name filter (accepts % wildcard)
-	 * @param domain the domain filter (accepts % wildcard)
-	 * @param description the description filter  (accepts % wildcard)
-	 * @param members members filter  (accepts % wildcard)
-	 * @return the mail lists that match the specified criteria
-	 * @throws UnexpectedException
+@WebService(
+		portName = "MailLists",
+		serviceName = "services/MailLists",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.MailListsWS"
+)
+public class MailLists extends AbstractService implements MailListsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.MailListsWS#findMailLists(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public Collection<MailList> findMailLists(String name, String domain, String description, String members)
 			throws UnexpectedException {
@@ -30,12 +29,8 @@ public class MailLists extends AbstractService {
 		}
 	}
 
-	/**
-	 * Creates a new mailList
-	 * 
-	 * @param mailList the mail list to create
-	 * @return the created mail list
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.MailListsWS#create(com.soffid.iam.api.MailList)
 	 */
 	public MailList create (MailList mailList) throws UnexpectedException
 	{
@@ -46,11 +41,8 @@ public class MailLists extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes an mailList
-	 * 
-	 * @param mailList the mail list to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.MailListsWS#remove(com.soffid.iam.api.MailList)
 	 */
 	public void remove (MailList mailList) throws UnexpectedException
 	{
@@ -61,11 +53,8 @@ public class MailLists extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update the mailList data
-	 * 
-	 * @param mailList mail list to update
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.MailListsWS#update(com.soffid.iam.api.MailList)
 	 */
 	public void update (MailList mailList) throws UnexpectedException
 	{
@@ -75,5 +64,4 @@ public class MailLists extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-
 }

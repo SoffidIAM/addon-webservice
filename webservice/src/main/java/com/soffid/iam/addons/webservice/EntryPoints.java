@@ -1,34 +1,27 @@
 package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
-import java.util.Date;
+
+import javax.jws.WebService;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.AccessTree;
 import com.soffid.iam.api.AccessTreeAuthorization;
 import com.soffid.iam.api.AccessTreeExecution;
 import com.soffid.iam.api.AccessTreeExecutionType;
-import com.soffid.iam.api.Account;
-import com.soffid.iam.api.RoleAccount;
-import com.soffid.iam.api.RoleGrant;
-import com.soffid.iam.api.User;
 
-import es.caib.seycon.ng.comu.AccountCriteria;
-import es.caib.seycon.ng.comu.AccountType;
-import es.caib.seycon.ng.comu.Password;
-import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class EntryPoints extends AbstractService {
-	/**
-	 * Gets the main access tree menu
-	 *
-	 * @return root entry poing
-	 * @throws UnexpectedException
+@WebService(
+        portName = "EntryPoints",
+        serviceName = "services/EntryPoints",
+        targetNamespace = "http://iam.soffid.com/wsdl",
+        endpointInterface = "com.soffid.iam.addons.webservice.EntryPointsWS"
+)
+public class EntryPoints extends AbstractService implements EntryPointsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#getRoot()
 	 */
 	public AccessTree getRoot () throws UnexpectedException
 	{
@@ -39,12 +32,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Retrieves the children menus and entry points
-	 * 
-	 * @param accessTree the parent access tree item
-	 * @return the children access tree items
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#getChildren(com.soffid.iam.api.AccessTree)
 	 */
 	public Collection<AccessTree> getChildren (AccessTree accessTree) throws UnexpectedException
 	{
@@ -55,12 +44,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Creates a new access tree menu or entry point
-	 * 
-	 * @param accessTree the item to create
-	 * @return the created item
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#create(com.soffid.iam.api.AccessTree)
 	 */
 	public AccessTree create (AccessTree accessTree) throws UnexpectedException
 	{
@@ -71,12 +56,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes a access tree menu or entry point. If the entry point is linked on more than one menu,
-	 * those copies will be kept.
-	 * 
-	 * @param accessTree the item to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#remove(com.soffid.iam.api.AccessTree)
 	 */
 	public void remove (AccessTree accessTree) throws UnexpectedException
 	{
@@ -87,12 +68,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Updates an access tree menu or entry point
-	 * 
-	 * @param accessTree the entry point to update 
-	 * @return the updated entry point
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#update(com.soffid.iam.api.AccessTree)
 	 */
 	public AccessTree update (AccessTree accessTree) throws UnexpectedException
 	{
@@ -103,13 +80,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 	
-	/**
-	 * Changes an access tree menu or entry point parent
-	 * 
-	 * @param accessTree the entry point to change
-	 * @param newParent the new parent
-	 * @return true if the operation is successful
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#move(com.soffid.iam.api.AccessTree, com.soffid.iam.api.AccessTree)
 	 */
 	public boolean move (AccessTree accessTree, AccessTree newParent) throws UnexpectedException
 	{
@@ -120,13 +92,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Changes the order of two menu or entry points on the same access tree menu
-	 * 
-	 * @param previousAccessTree the entry point to place before nextAccessTree
-	 * @param nextAccessTree the reference entry point.
-	 * @return true if he operation is successful
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#reorder(com.soffid.iam.api.AccessTree, com.soffid.iam.api.AccessTree)
 	 */
 	public boolean reorder (AccessTree previousAccessTree, AccessTree nextAccessTree) throws UnexpectedException
 	{
@@ -138,12 +105,8 @@ public class EntryPoints extends AbstractService {
 	}
 
 
-	/**
-	 * Creates a hard link for a existing accessTree.
-	 * @param accessTree the entry point to link to
-	 * @param newParent the menu where to place the entry point.
-	 * @return true if the opreaction is successful
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#link(com.soffid.iam.api.AccessTree, com.soffid.iam.api.AccessTree)
 	 */
 	public boolean link (AccessTree accessTree, AccessTree newParent) throws UnexpectedException
 	{
@@ -154,13 +117,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Creates a clone of an existing menu or entry point
-	 * 
-	 * @param accessTree the entry point to clone
-	 * @param newParent the parent where to place the cloned entry point
-	 * @return true if the operation is successful
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#clone(com.soffid.iam.api.AccessTree, com.soffid.iam.api.AccessTree)
 	 */
 	public boolean clone (AccessTree accessTree, AccessTree newParent) throws UnexpectedException
 	{
@@ -171,11 +129,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Gets a menu or entry point Access Control List
-	 * @param accessTree the entry point
-	 * @return the access control list
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#getPermissions(com.soffid.iam.api.AccessTree)
 	 */
 	public Collection<AccessTreeAuthorization> getPermissions (AccessTree accessTree) throws UnexpectedException
 	{
@@ -186,11 +141,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Sets a menu or entry point access control list
-	 * @param accessTree the entry point
-	 * @param authorizations the desired acccess control list
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#setPermissions(com.soffid.iam.api.AccessTree, java.util.Collection)
 	 */
 	public void setPermissions (AccessTree accessTree, Collection<AccessTreeAuthorization> authorizations) throws UnexpectedException
 	{
@@ -208,11 +160,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Gets the execution scripts to be launched when the user opens a entry point
-	 * @param accessTree the entry point
-	 * @return the list of enabled executions
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#getExecutions(com.soffid.iam.api.AccessTree)
 	 */
 	public Collection<AccessTreeExecution> getExecutions (AccessTree accessTree) throws UnexpectedException
 	{
@@ -223,12 +172,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Creates an execution for an access tree entry point
-	 * @param accessTree the entry point
-	 * @param execution the execution to create
-	 * @return the created execution
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#createExecution(com.soffid.iam.api.AccessTree, com.soffid.iam.api.AccessTreeExecution)
 	 */
 	public AccessTreeExecution createExecution (AccessTree accessTree, AccessTreeExecution execution) throws UnexpectedException
 	{
@@ -239,13 +184,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Updates a entry point exeuction
-	 * 
-	 * @param accessTree the entry point
-	 * @param execution the execution to update
-	 * @return the updated execution
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#updateExecution(com.soffid.iam.api.AccessTree, com.soffid.iam.api.AccessTreeExecution)
 	 */
 	public AccessTreeExecution updateExecution (AccessTree accessTree, AccessTreeExecution execution) throws UnexpectedException
 	{
@@ -256,11 +196,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 	
-	/**
-	 * Removes a entry point execution
-	 * @param accessTree the entry point
-	 * @param execution the execution to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#removeExecution(com.soffid.iam.api.AccessTree, com.soffid.iam.api.AccessTreeExecution)
 	 */
 	public void removeExecution (AccessTree accessTree, AccessTreeExecution execution) throws UnexpectedException
 	{
@@ -271,11 +208,8 @@ public class EntryPoints extends AbstractService {
 		}
 	}
 
-	/**
-	 * Obtains the list of allowed mime types
-	 * 
-	 * @return the list of allowed mime types
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.EntryPointsWS#getAllowedMimeTypes()
 	 */
 	public Collection<AccessTreeExecutionType> getAllowedMimeTypes () throws UnexpectedException
 	{
@@ -285,9 +219,4 @@ public class EntryPoints extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-
-
-
-
-
 }

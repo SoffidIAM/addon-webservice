@@ -3,14 +3,11 @@ package com.soffid.iam.addons.webservice;
 import java.util.Collection;
 import java.util.Date;
 
-import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.Account;
-import com.soffid.iam.api.RoleAccount;
 import com.soffid.iam.api.RoleGrant;
-import com.soffid.iam.api.User;
 
 import es.caib.seycon.ng.comu.AccountCriteria;
 import es.caib.seycon.ng.comu.AccountType;
@@ -18,18 +15,14 @@ import es.caib.seycon.ng.comu.Password;
 import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
 @WebService(
         portName = "Accounts",
         serviceName = "services/Accounts",
         targetNamespace = "http://iam.soffid.com/wsdl",
         endpointInterface = "com.soffid.iam.addons.webservice.AccountsWS"
 )
-// @HandlerChain(file = "server-handlers.xml")
 public class Accounts extends AbstractService implements AccountsWS {
+
 	/* (non-Javadoc)
 	 * @see com.soffid.iam.addons.webservice.AccountsWS#findAccounts(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */

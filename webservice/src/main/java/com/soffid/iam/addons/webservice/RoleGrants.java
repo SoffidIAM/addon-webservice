@@ -1,8 +1,8 @@
 package com.soffid.iam.addons.webservice;
 
-import java.util.Collection;
-import java.util.Date;
 import java.util.Iterator;
+
+import javax.jws.WebService;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.Account;
@@ -12,25 +12,18 @@ import com.soffid.iam.api.Role;
 import com.soffid.iam.api.RoleAccount;
 import com.soffid.iam.api.RoleGrant;
 
-import es.caib.seycon.ng.comu.AccountCriteria;
-import es.caib.seycon.ng.comu.AccountType;
-import es.caib.seycon.ng.comu.Password;
-import es.caib.seycon.ng.comu.RolGrant;
-import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class RoleGrants extends AbstractService {
-	/**
-	 * Grants a role to a account
-	 * 
-	 * @param account account to grant the role
-	 * @role the granted role
-	 * @scopeValue (optional) the scope to assign the role on
-	 * @throws UnexpectedException
+@WebService(
+		portName = "RoleGrants",
+		serviceName = "services/RoleGrants",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.RoleGrantsWS"
+)
+public class RoleGrants extends AbstractService implements RoleGrantsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.RoleGrantsWS#grantToAccount(com.soffid.iam.api.Account, com.soffid.iam.api.Role, java.lang.String)
 	 */
 	public void grantToAccount (Account account, Role role, String scopeValue) throws UnexpectedException
 	{
@@ -62,13 +55,8 @@ public class RoleGrants extends AbstractService {
 		}
 	}
 
-	/**
-	 * Reovkes a role from a account
-	 * 
-	 * @param account account to grant the role
-	 * @role the granted role
-	 * @scopeValue (optional) the scope to assign the role on
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.RoleGrantsWS#revokeFromAccount(com.soffid.iam.api.Account, com.soffid.iam.api.Role, java.lang.String)
 	 */
 	public void revokeFromAccount (Account account, Role role, String scopeValue) throws UnexpectedException
 	{
@@ -88,14 +76,9 @@ public class RoleGrants extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	/**
-	 * Grants a role to another role
-	 * 
-	 * @param ownerRole the role whose owners will also have grantedRole granted
-	 * @param ownedRole the role to be granted to any ownerRole owner
-	 * @scopeValue (optional) the scope to assign the role on
-	 * @throws UnexpectedException
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.RoleGrantsWS#grantToRole(com.soffid.iam.api.Role, com.soffid.iam.api.Role, java.lang.String)
 	 */
 	public void grantToRole (Role ownerRole, Role ownedRole, String scopeValue) throws UnexpectedException
 	{
@@ -118,13 +101,8 @@ public class RoleGrants extends AbstractService {
 		}
 	}
 
-	/**
-	 * Reovkes a role from another role
-	 * 
-	 * @param account account to grant the role
-	 * @role the granted role
-	 * @scopeValue (optional) the scope to assign the role on
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.RoleGrantsWS#revokeFromRole(com.soffid.iam.api.Role, com.soffid.iam.api.Role, java.lang.String)
 	 */
 	public void revokeFromRole (Role ownerRole, Role ownedRole, String scopeValue) throws UnexpectedException
 	{
@@ -147,14 +125,9 @@ public class RoleGrants extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	
-	/**
-	 * Grants a role to another role
-	 * 
-	 * @param ownerRole the role whose owners will also have grantedRole granted
-	 * @param ownedRole the role to be granted to any ownerRole owner
-	 * @throws UnexpectedException
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.RoleGrantsWS#grantToGroup(com.soffid.iam.api.Group, com.soffid.iam.api.Role)
 	 */
 	public void grantToGroup (Group group, Role ownedRole) throws UnexpectedException
 	{
@@ -168,13 +141,8 @@ public class RoleGrants extends AbstractService {
 		}
 	}
 
-	/**
-	 * Reovkes a role from another role
-	 * 
-	 * @param account account to grant the role
-	 * @role the granted role
-	 * @scopeValue (optional) the scope to assign the role on
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.RoleGrantsWS#revokeFromGroup(com.soffid.iam.api.Group, com.soffid.iam.api.Role, java.lang.String)
 	 */
 	public void revokeFromGroup (Group group, Role ownedRole, String scopeValue) throws UnexpectedException
 	{
@@ -195,6 +163,5 @@ public class RoleGrants extends AbstractService {
 		} catch (InternalErrorException e) {
 			throw new UnexpectedException(e);
 		}
-	}
-	
+	}	
 }

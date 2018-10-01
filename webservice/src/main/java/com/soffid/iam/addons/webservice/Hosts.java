@@ -2,33 +2,23 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.Host;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
-/**
- * @author bubu
- * 
- */
-public class Hosts extends AbstractService {
-	
-	/**
-	 * Find hosts
-	 * 
-	 * @param name the host name (accepts % wildcards)
-	 * @param operationSystem operating system (accepts % wildcards)
-	 * @param address IP address (accepts % wildcards)
-	 * @param dhcp DHCP parameters 
-	 * @param mailServer true to find hosts acting as mail server
-	 * @param driveServer true to find hosts acting as driver server
-	 * @param alias host alias filter
-	 * @param mac MAC address (accepts % wildcards)
-	 * @param description description filter (accepts % wildcards)
-	 * @param network network name filter (accepts % wildcards)
-	 * @param user active user filter (accepts % wildcards)
-	 * @return
-	 * @throws UnexpectedException
+@WebService(
+        portName = "Hosts",
+        serviceName = "services/Hosts",
+        targetNamespace = "http://iam.soffid.com/wsdl",
+        endpointInterface = "com.soffid.iam.addons.webservice.HostsWS"
+)
+public class Hosts extends AbstractService implements HostsWS {
+
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.HostsWS#findHosts(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
 	 */
 	public Collection<Host> findHosts(String name, String operationSystem, String address, String dhcp, Boolean mailServer,
 			Boolean driveServer, String alias, String mac, String description, String network, String user)
@@ -43,13 +33,8 @@ public class Hosts extends AbstractService {
 		}
 	}
 	
-	
-	/**
-	 * Creates a Host
-	 * 
-	 * @param host Host to create
-	 * @return created Host
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.HostsWS#create(com.soffid.iam.api.Host)
 	 */
 	public Host create (Host host) throws UnexpectedException
 	{
@@ -60,11 +45,8 @@ public class Hosts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Removes a Host
-	 * 
-	 * @param host host to remove
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.HostsWS#remove(com.soffid.iam.api.Host)
 	 */
 	public void remove (Host host) throws UnexpectedException
 	{
@@ -75,12 +57,8 @@ public class Hosts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Update Host data
-	 * 
-	 * @param host the Host to update
-	 * @return the updated Host
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.HostsWS#update(com.soffid.iam.api.Host)
 	 */
 	public Host update (Host host) throws UnexpectedException
 	{
@@ -92,12 +70,8 @@ public class Hosts extends AbstractService {
 		}
 	}
 
-	/**
-	 * Gets local administrator user and password
-	 * 
-	 * @param host the host whose credentials to know
-	 * @return two strings containing local administrator user and password
-	 * @throws UnexpectedException
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.HostsWS#getAdminCredentials(com.soffid.iam.api.Host)
 	 */
 	public String[] getAdminCredentials (Host host) throws UnexpectedException
 	{
@@ -107,6 +81,4 @@ public class Hosts extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
 }
-

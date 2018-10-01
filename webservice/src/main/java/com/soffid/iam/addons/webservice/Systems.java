@@ -2,15 +2,24 @@ package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
 
+import javax.jws.WebService;
+
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.System;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
+@WebService(
+		portName = "Systems",
+		serviceName = "services/Systems",
+		targetNamespace = "http://iam.soffid.com/wsdl",
+		endpointInterface = "com.soffid.iam.addons.webservice.SystemsWS"
+)
+public class Systems extends AbstractService implements SystemsWS {
 
-public class Systems extends AbstractService {
-	
-	
+	/* (non-Javadoc)
+	 * @see com.soffid.iam.addons.webservice.SystemsWS#findDispatchers(java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean, java.lang.Boolean)
+	 */
 	public Collection<System> findDispatchers(String name, String className, String url, Boolean roleBased, Boolean trusted, Boolean active  )
 			throws UnexpectedException {
 		try {
@@ -37,8 +46,4 @@ public class Systems extends AbstractService {
 			throw new UnexpectedException(e);
 		}
 	}
-	
-	
-
 }
-
