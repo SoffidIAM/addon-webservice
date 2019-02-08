@@ -1,19 +1,10 @@
 package com.soffid.iam.addons.webservice;
 
 import java.util.Collection;
-import java.util.Date;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
-import com.soffid.iam.api.Account;
-import com.soffid.iam.api.RoleAccount;
-import com.soffid.iam.api.RoleGrant;
 import com.soffid.iam.api.Session;
-import com.soffid.iam.api.User;
 
-import es.caib.seycon.ng.comu.AccountCriteria;
-import es.caib.seycon.ng.comu.AccountType;
-import es.caib.seycon.ng.comu.Password;
-import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
 import es.caib.seycon.ng.exception.InternalErrorException;
 
 /**

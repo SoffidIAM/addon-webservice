@@ -4,17 +4,12 @@ import java.util.Collection;
 
 import org.omg.CORBA.UnknownUserException;
 
-
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.addons.webservice.exception.UnknownSystemException;
-import com.soffid.iam.api.Account;
-import com.soffid.iam.api.GroupUser;
 import com.soffid.iam.api.System;
 import com.soffid.iam.api.User;
 import com.soffid.iam.api.UserAccount;
 
-import es.caib.seycon.ng.comu.AccountCriteria;
-import es.caib.seycon.ng.comu.AccountType;
 import es.caib.seycon.ng.exception.AccountAlreadyExistsException;
 import es.caib.seycon.ng.exception.InternalErrorException;
 import es.caib.seycon.ng.exception.NeedsAccountNameException;

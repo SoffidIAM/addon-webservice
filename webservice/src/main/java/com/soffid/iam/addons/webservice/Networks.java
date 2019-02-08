@@ -4,7 +4,6 @@ import java.util.Collection;
 
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.api.Network;
-import com.soffid.iam.api.Network;
 
 import es.caib.seycon.ng.exception.InternalErrorException;
 
