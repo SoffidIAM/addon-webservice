@@ -4,8 +4,6 @@ import java.util.Collection;
 
 import javax.jws.WebService;
 
-import org.omg.CORBA.UnknownUserException;
-
 import com.soffid.iam.addons.webservice.exception.UnexpectedException;
 import com.soffid.iam.addons.webservice.exception.UnknownSystemException;
 import com.soffid.iam.api.System;
