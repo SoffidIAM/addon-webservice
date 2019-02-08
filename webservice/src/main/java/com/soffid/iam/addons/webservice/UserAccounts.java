@@ -38,15 +38,16 @@ public class UserAccounts extends AbstractService implements UserAccountsWS {
 	/* (non-Javadoc)
 	 * @see com.soffid.iam.addons.webservice.UserAccountsWS#create(java.lang.String, java.lang.String, java.lang.String)
 	 */
-	public UserAccount create (String userName, String system, String accountName) throws UnknownUserException, UnknownSystemException, NeedsAccountNameException, AccountAlreadyExistsException, UnexpectedException
+
+	public UserAccount create (String userName, String system, String accountName) throws UnknownSystemException, NeedsAccountNameException, AccountAlreadyExistsException, UnexpectedException
 	{
 		try {
 			User user = getUsersService().findUserByUserName(userName);
 			if (user == null)
-				throw new UnknownUserException();
+				throw new UnknownSystemException("Unknown user "+userName);
 			System dispatcher = getDispatcherService().findDispatcherByName(system);
 			if (dispatcher == null)
-				throw new UnknownSystemException ();
+				throw new UnknownSystemException (system);
 			return getAccountService().createAccount(user, dispatcher, accountName);
 		} catch (InternalErrorException e) {
 			throw new UnexpectedException(e);
